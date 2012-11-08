@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_--KG0CnBEeKnxrPfxV09mg" elementId="org.eclipse.e4.ide.application" bindingContexts="_--KG0SnBEeKnxrPfxV09mg">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_--KG5ynBEeKnxrPfxV09mg" label="de.lmu.ifi.dbs.medmon.life.e4" width="500" height="400">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_--KG7ynBEeKnxrPfxV09mg">
+      <children xsi:type="advanced:Perspective" xmi:id="_--KG8CnBEeKnxrPfxV09mg">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_--KG8SnBEeKnxrPfxV09mg">
+          <children xsi:type="basic:PartStack" xmi:id="_--KG8inBEeKnxrPfxV09mg"/>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_--KG6CnBEeKnxrPfxV09mg" elementId="menu:org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_--KG6SnBEeKnxrPfxV09mg" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_--KG6inBEeKnxrPfxV09mg" label="Open" iconURI="platform:/plugin/de.lmu.ifi.dbs.medmon.life.e4/icons/sample.gif" command="_--KG3inBEeKnxrPfxV09mg"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_--KG6ynBEeKnxrPfxV09mg" label="Save" iconURI="platform:/plugin/de.lmu.ifi.dbs.medmon.life.e4/icons/save_edit.gif" command="_--KG4SnBEeKnxrPfxV09mg"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_--KG7CnBEeKnxrPfxV09mg" label="Quit" command="_--KG2inBEeKnxrPfxV09mg"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_--KG7SnBEeKnxrPfxV09mg" label="Help">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_--KG7inBEeKnxrPfxV09mg" label="About" command="_--KG5CnBEeKnxrPfxV09mg"/>
+      </children>
+    </mainMenu>
+    <trimBars xmi:id="_--KG8ynBEeKnxrPfxV09mg">
+      <children xsi:type="menu:ToolBar" xmi:id="_--KG9CnBEeKnxrPfxV09mg" elementId="toolbar:org.eclipse.ui.main.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_--KG9SnBEeKnxrPfxV09mg" iconURI="platform:/plugin/de.lmu.ifi.dbs.medmon.life.e4/icons/sample.gif" command="_--KG3inBEeKnxrPfxV09mg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_--KG9inBEeKnxrPfxV09mg" iconURI="platform:/plugin/de.lmu.ifi.dbs.medmon.life.e4/icons/save_edit.gif" command="_--KG4SnBEeKnxrPfxV09mg"/>
+      </children>
+    </trimBars>
+  </children>
+  <handlers xmi:id="_--KG2ynBEeKnxrPfxV09mg" contributionURI="bundleclass://de.lmu.ifi.dbs.medmon.life.e4/de.lmu.ifi.dbs.medmon.life.e4.handlers.QuitHandler" command="_--KG2inBEeKnxrPfxV09mg"/>
+  <handlers xmi:id="_--KG3ynBEeKnxrPfxV09mg" contributionURI="bundleclass://de.lmu.ifi.dbs.medmon.life.e4/de.lmu.ifi.dbs.medmon.life.e4.handlers.OpenHandler" command="_--KG3inBEeKnxrPfxV09mg"/>
+  <handlers xmi:id="_--KG4inBEeKnxrPfxV09mg" contributionURI="bundleclass://de.lmu.ifi.dbs.medmon.life.e4/de.lmu.ifi.dbs.medmon.life.e4.handlers.SaveHandler" command="_--KG4SnBEeKnxrPfxV09mg"/>
+  <handlers xmi:id="_--KG5SnBEeKnxrPfxV09mg" contributionURI="bundleclass://de.lmu.ifi.dbs.medmon.life.e4/de.lmu.ifi.dbs.medmon.life.e4.handlers.AboutHandler" command="_--KG5CnBEeKnxrPfxV09mg"/>
+  <bindingTables xmi:id="_--KG3CnBEeKnxrPfxV09mg" bindingContext="_--KG0SnBEeKnxrPfxV09mg">
+    <bindings xmi:id="_--KG3SnBEeKnxrPfxV09mg" keySequence="M1+Q" command="_--KG2inBEeKnxrPfxV09mg"/>
+    <bindings xmi:id="_--KG4CnBEeKnxrPfxV09mg" keySequence="M1+O" command="_--KG3inBEeKnxrPfxV09mg"/>
+    <bindings xmi:id="_--KG4ynBEeKnxrPfxV09mg" keySequence="M1+S" command="_--KG4SnBEeKnxrPfxV09mg"/>
+    <bindings xmi:id="_--KG5inBEeKnxrPfxV09mg" keySequence="M1+A" command="_--KG5CnBEeKnxrPfxV09mg"/>
+  </bindingTables>
+  <rootContext xmi:id="_--KG0SnBEeKnxrPfxV09mg" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_--KG0inBEeKnxrPfxV09mg" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_--KG0ynBEeKnxrPfxV09mg" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_--KG2inBEeKnxrPfxV09mg" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
+  <commands xmi:id="_--KG3inBEeKnxrPfxV09mg" elementId="de.lmu.ifi.dbs.medmon.life.e4.open" commandName="openCommand"/>
+  <commands xmi:id="_--KG4SnBEeKnxrPfxV09mg" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
+  <commands xmi:id="_--KG5CnBEeKnxrPfxV09mg" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
+  <addons xmi:id="_--KG1CnBEeKnxrPfxV09mg" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_--KG1SnBEeKnxrPfxV09mg" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_--KG1inBEeKnxrPfxV09mg" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_--KG1ynBEeKnxrPfxV09mg" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_--KG2CnBEeKnxrPfxV09mg" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_--KG2SnBEeKnxrPfxV09mg" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>
