@@ -13,6 +13,7 @@
         <module>de.lmu.ifi.dbs.medmon.life.e4</module>
         <module>de.lmu.ifi.dbs.medmon.life.ui.feature</module>
         <module>de.lmu.ifi.dbs.medmon.life.updatesite</module>
+        <module>de.lmu.ifi.dbs.medmon.life.core.tests</module>
     </modules>
     <properties>
         <tycho.version>0.16.0</tycho.version>
@@ -20,6 +21,23 @@
         <maven.compiler.target>1.7</maven.compiler.target>
         <encoding>UTF-8</encoding>
     </properties>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/knowing/MedmonLife/issues</url>
+    </issueManagement>
+    <scm>
+        <url>https://github.com/knowing/MedmonLife</url>
+        <connection>git://github.com/knowing/MedmonLife.git</connection>
+        <developerConnection>git://github.com/knowing/MedmonLife.git</developerConnection>
+    </scm>
+    <organization>
+        <url>http://www.dbs.ifi.lmu.de</url>
+        <name>Department of Computer Science Database Systems Group</name>
+    </organization>
+    <name>Medmon@Life</name>
+    <url>https://github.com/knowing/MedmonLife</url>
+    <description>A small application to managed sensor data and associate it with patients.</description>
 
     <build>
         <plugins>
