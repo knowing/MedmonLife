@@ -14,6 +14,7 @@
         <module>de.lmu.ifi.dbs.medmon.life.ui.feature</module>
         <module>de.lmu.ifi.dbs.medmon.life.updatesite</module>
         <module>de.lmu.ifi.dbs.medmon.life.core.tests</module>
+        <module>de.lmu.ifi.dbs.medmon.life.target</module>
     </modules>
     <properties>
         <tycho.version>0.16.0</tycho.version>
@@ -65,81 +66,29 @@
                     </dependencies>
                 </configuration>
             </plugin>
+            <!-- Use custom target platform -->
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho.version}</version>
+                <configuration>
+                    <target>
+                        <artifact>
+                            <groupId>de.lmu.ifi.dbs.medmon.life</groupId>
+                            <artifactId>de.lmu.ifi.dbs.medmon.life.target</artifactId>
+                            <version>${project.version}</version>
+                        </artifact>
+                    </target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
     <repositories>
-        <!-- Eclipse repositories -->
         <repository>
-            <id>eclipse-juno</id>
+            <id>juno</id>
             <layout>p2</layout>
             <url>http://download.eclipse.org/releases/juno</url>
-        </repository>
-        <repository>
-            <id>eclipse-sapphire</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/sapphire/0.5.2/repository</url>
-        </repository>
-        <repository>
-            <id>eclipse-scala-ide</id>
-            <layout>p2</layout>
-            <url>http://download.scala-ide.org/releases-29/milestone/site</url>
-        </repository>
-        <repository>
-            <id>eclipse-gemini-dbaccess</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/gemini/dbaccess/updates/1.0</url>
-        </repository>
-        <repository>
-            <id>eclipse-nebula</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/technology/nebula/snapshot</url>
-        </repository>
-        <repository>
-            <id>eclipse-nebula-incubation</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/technology/nebula/incubation/snapshot</url>
-        </repository>
-        <repository>
-            <id>logback</id>
-            <layout>p2</layout>
-            <url>http://logback.qos.ch/p2</url>
-        </repository>
-
-        <!-- Custom repositories -->
-        <repository>
-            <id>google-guava</id>
-            <layout>p2</layout>
-            <url>http://guava-osgi.googlecode.com/svn/trunk/repository/</url>
-        </repository>
-        <repository>
-            <id>medmon-repository</id>
-            <layout>p2</layout>
-            <url>http://repository.mukis.de/p2/medmon/snapshot</url>
-        </repository>
-        <repository>
-            <id>knowing-repository</id>
-            <layout>p2</layout>
-            <url>http://repository.mukis.de/p2/knowing/snapshot</url>
-        </repository>
-        <repository>
-            <id>jama-repository</id>
-            <layout>p2</layout>
-            <url>http://repository.mukis.de/p2/jama/1.0.2</url>
-        </repository>
-        <repository>
-            <id>joda-repository</id>
-            <layout>p2</layout>
-            <url>http://repository.mukis.de/p2/joda</url>
-        </repository>
-        <repository>
-            <id>jfreechart</id>
-            <layout>p2</layout>
-            <url>http://repository.mukis.de/p2/jfreechart</url>
-        </repository>
-        <repository>
-            <id>weka</id>
-            <layout>p2</layout>
-            <url>http://repository.mukis.de/p2/weka/3.7.6</url>
         </repository>
     </repositories>
 </project>
