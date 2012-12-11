@@ -7,10 +7,21 @@
    </configIni>
 
    <launcherArgs>
+      <vmArgs>-DREFRESH_BUNDLES=false</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
+
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
 
    <plugins>
       <plugin id="com.ibm.icu"/>
@@ -114,15 +125,21 @@
       <feature id="org.eclipse.sapphire.java" version="0.5.3.201209191432"/>
       <feature id="org.eclipse.sapphire.modeling.xml" version="0.5.3.201209191432"/>
       <feature id="org.eclipse.gemini.jpa.feature" version="1.1.0.RELEASE"/>
+      <feature id="org.eclipse.gemini.dbaccess.feature" version="1.1.0.201209190714"/>
       <feature id="org.eclipse.persistence.jpa" version="2.4.0.v20120608-r11652"/>
       <feature id="ch.qos.logback.feature" version="1.0.7"/>
       <feature id="org.joda.convert.feature" version="1.2.0"/>
       <feature id="org.joda.time.feature" version="2.1.0"/>
       <feature id="org.slf4j.feature" version="1.6.6"/>
-      <feature id="de.lmu.ifi.dbs.medmon.medic.core.feature" version="1.0.0.201211281900"/>
-      <feature id="de.lmu.ifi.dbs.medmon.sensor.feature" version="1.0.0.201211281900"/>
-      <feature id="de.sendsor.accelerationSensor.feature" version="1.0.0.201211281900"/>
+      <feature id="de.lmu.ifi.dbs.medmon.medic.core.feature" version="1.0.0.201212032154"/>
+      <feature id="de.lmu.ifi.dbs.medmon.sensor.feature" version="1.0.0.201212032154"/>
+      <feature id="de.sendsor.accelerationSensor.feature" version="1.0.0.201212032154"/>
    </features>
 
+   <configurations>
+      <plugin id="de.lmu.ifi.dbs.medmon.derby" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.gemini.dbaccess.derby" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="3" />
+   </configurations>
 
 </product>

@@ -1,8 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Life Core
-Bundle-SymbolicName: de.lmu.ifi.dbs.medmon.life.core
+Bundle-SymbolicName: de.lmu.ifi.dbs.medmon.life.core;singleton:=true
 Bundle-Version: 0.0.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: de.lmu.ifi.dbs.medmon.derby;bundle-version="[1.0.0,2.0.0)",
- de.lmu.ifi.dbs.medmon.medic.core;bundle-version="[1.0.0,2.0.0)"
+ de.lmu.ifi.dbs.medmon.medic.core;bundle-version="[1.0.0,2.0.0)",
+ javax.persistence;bundle-version="[2.0.4,2.1.0)"
+Service-Component: OSGI-INF/SearchService.xml
+Import-Package: org.slf4j;version="[1.6.0,2.0.0)"
+Bundle-ActivationPolicy: lazy
