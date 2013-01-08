@@ -14,10 +14,18 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
-public class Start {
+import de.lmu.ifi.dbs.medmon.life.e4.wizards.DeletionWizard;
+import de.lmu.ifi.dbs.medmon.life.e4.wizards.ExportWizard;
+import de.lmu.ifi.dbs.medmon.life.e4.wizards.ImportWizard;
+
+public class StartView {
 
 	@Inject
 	private ExportWizard exportWizard;
+	@Inject
+	private ImportWizard importWizard;
+	@Inject
+	private DeletionWizard deletionWizard;
 
 	/**
 	 * Create contents of the view part.
@@ -26,6 +34,17 @@ public class Start {
 	public void createControls(final Composite parent) {
 		GridLayout gl_parent = new GridLayout(2, false);
 		parent.setLayout(gl_parent);
+		
+		Button btnImport = new Button(parent, SWT.NONE);
+		btnImport.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				WizardDialog dialog = new WizardDialog(parent.getShell(), importWizard);
+				dialog.open();
+			}
+		});
+		btnImport.setText("Import");
+		new Label(parent, SWT.NONE);
 
 		Button btnExport = new Button(parent, SWT.NONE);
 		btnExport.addSelectionListener(new SelectionAdapter() {
@@ -36,6 +55,17 @@ public class Start {
 			}
 		});
 		btnExport.setText("Export");
+		new Label(parent, SWT.NONE);
+		
+		Button btnDelete = new Button(parent, SWT.NONE);
+		btnDelete.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				WizardDialog dialog = new WizardDialog(parent.getShell(), deletionWizard);
+				dialog.open();
+			}
+		});
+		btnDelete.setText("Daten/Patienten l\u00F6schen");
 		new Label(parent, SWT.NONE);
 
 	}

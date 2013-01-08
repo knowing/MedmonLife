@@ -1,5 +1,8 @@
-package de.lmu.ifi.dbs.medmon.life.e4;
+package de.lmu.ifi.dbs.medmon.life.e4.wizards.pages;
 
+import javax.inject.Inject;
+
+import org.eclipse.e4.core.di.annotations.Creatable;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -7,15 +10,16 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.layout.GridData;
 
+@Creatable
 public class ExportFinished extends WizardPage {
 
 	/**
 	 * Create the wizard.
 	 */
+	@Inject
 	public ExportFinished() {
 		super("wizardPage");
-		setTitle("Datenexport");
-		setDescription("Export abgeschlossen");
+		setTitle("Export abgeschlossen");
 	}
 
 	/**
@@ -28,8 +32,8 @@ public class ExportFinished extends WizardPage {
 		setControl(container);
 		container.setLayout(new GridLayout(1, false));
 		
-		Label lblZipfileErstellt = new Label(container, SWT.NONE);
-		lblZipfileErstellt.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, true, false, 1, 1));
-		lblZipfileErstellt.setText("Zipfile erstellt\r\n\r\nExport abgeschlossen");
+		Label lblZipfileCreated = new Label(container, SWT.NONE);
+		lblZipfileCreated.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, true, false, 1, 1));
+		lblZipfileCreated.setText("Zipfile erstellt\r\n\r\nExport abgeschlossen");
 	}
 }

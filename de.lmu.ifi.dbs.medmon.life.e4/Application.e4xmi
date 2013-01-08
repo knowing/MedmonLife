@@ -4,7 +4,7 @@
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_--KG7ynBEeKnxrPfxV09mg">
       <children xsi:type="advanced:Perspective" xmi:id="_--KG8CnBEeKnxrPfxV09mg">
         <children xsi:type="basic:PartSashContainer" xmi:id="_--KG8SnBEeKnxrPfxV09mg">
-          <children xsi:type="basic:Part" xmi:id="_sXcc0FNiEeKX0vqiu92cUg" elementId="de.lmu.ifi.dbs.medmon.life.e4.part.start" contributionURI="bundleclass://de.lmu.ifi.dbs.medmon.life.e4/de.lmu.ifi.dbs.medmon.life.e4.Start" label="LifeStart"/>
+          <children xsi:type="basic:Part" xmi:id="_sXcc0FNiEeKX0vqiu92cUg" elementId="de.lmu.ifi.dbs.medmon.life.e4.part.start" contributionURI="bundleclass://de.lmu.ifi.dbs.medmon.life.e4/de.lmu.ifi.dbs.medmon.life.e4.StartView" label="LifeStart"/>
         </children>
       </children>
     </children>
