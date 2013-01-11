@@ -3,6 +3,7 @@ package de.lmu.ifi.dbs.medmon.life.e4.wizards.pages;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.di.annotations.Creatable;
+import org.eclipse.e4.ui.services.IStylingEngine;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -16,6 +17,8 @@ import org.eclipse.swt.widgets.Button;
 @Creatable
 public class PatientSelection extends WizardPage {
 	private Text txtPatientInput;
+
+	@Inject IStylingEngine styleEngine;
 
 	/**
 	 * Create the wizard.
@@ -31,17 +34,22 @@ public class PatientSelection extends WizardPage {
 	 * @param parent
 	 */
 	public void createControl(Composite parent) {
+		styleEngine.setId(parent, "WizardStyle");
+		parent.setBackgroundMode(SWT.INHERIT_DEFAULT);
 		Composite compositePatientSelection = new Composite(parent, SWT.NULL);
 
 		setControl(compositePatientSelection);
-		compositePatientSelection.setLayout(new GridLayout(2, true));
+		GridLayout gl_compositePatientSelection = new GridLayout(2, true);
+		compositePatientSelection.setLayout(gl_compositePatientSelection);
 		
 		Label lblSelectPatient = new Label(compositePatientSelection, SWT.NONE);
 		lblSelectPatient.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
 		lblSelectPatient.setText("Bitte Patient ausw\u00E4hlen");
 		
 		txtPatientInput = new Text(compositePatientSelection, SWT.BORDER);
-		txtPatientInput.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+		GridData gd_txtPatientInput = new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1);
+		gd_txtPatientInput.widthHint = 400;
+		txtPatientInput.setLayoutData(gd_txtPatientInput);
 		
 		List patientList = new List(compositePatientSelection, SWT.BORDER);
 		patientList.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));

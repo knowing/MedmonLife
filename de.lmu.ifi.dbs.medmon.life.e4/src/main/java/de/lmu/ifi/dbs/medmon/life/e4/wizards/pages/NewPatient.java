@@ -3,6 +3,7 @@ package de.lmu.ifi.dbs.medmon.life.e4.wizards.pages;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.di.annotations.Creatable;
+import org.eclipse.e4.ui.services.IStylingEngine;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -16,6 +17,8 @@ import org.eclipse.swt.widgets.DateTime;
 @Creatable
 public class NewPatient extends WizardPage {
 
+	@Inject IStylingEngine styleEngine;
+	
 	/**
 	 * Create the wizard.
 	 */
@@ -30,6 +33,8 @@ public class NewPatient extends WizardPage {
 	 * @param parent
 	 */
 	public void createControl(Composite parent) {
+		styleEngine.setId(parent, "WizardStyle");
+		parent.setBackgroundMode(SWT.INHERIT_DEFAULT);
 		Composite compositeNewPatient = new Composite(parent, SWT.NULL);
 
 		setControl(compositeNewPatient);
@@ -77,6 +82,9 @@ public class NewPatient extends WizardPage {
 		lblComment.setText("Kommentar");
 		
 		Text textComment = new Text(compositeComment, SWT.BORDER);
-		textComment.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+		GridData gd_textComment = new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1);
+		gd_textComment.heightHint = 100;
+		gd_textComment.widthHint = 400;
+		textComment.setLayoutData(gd_textComment);
 	}
 }

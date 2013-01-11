@@ -3,6 +3,7 @@ package de.lmu.ifi.dbs.medmon.life.e4.wizards.pages;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.di.annotations.Creatable;
+import org.eclipse.e4.ui.services.IStylingEngine;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -18,6 +19,8 @@ import org.eclipse.swt.widgets.Text;
 public class Filteroptions extends WizardPage {
 	private Text inputPatient;
 
+	@Inject IStylingEngine styleEngine;
+	
 	/**
 	 * Create the wizard.
 	 */
@@ -34,6 +37,8 @@ public class Filteroptions extends WizardPage {
 	 */
 	public void createControl(Composite parent) {
 		Composite compositeFilteroptions = new Composite(parent, SWT.NULL);
+		styleEngine.setId(parent, "WizardStyle");
+		parent.setBackgroundMode(SWT.INHERIT_DEFAULT);
 
 		setControl(compositeFilteroptions);
 		compositeFilteroptions.setLayout(new GridLayout(1, false));
@@ -51,9 +56,9 @@ public class Filteroptions extends WizardPage {
 		Composite compositeAge = new Composite(compositeFilteroptions, SWT.NONE);
 		compositeAge.setLayout(new GridLayout(3, false));
 
-		Label lblAlter = new Label(compositeAge, SWT.NONE);
-		lblAlter.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
-		lblAlter.setText("Alter");
+		Label lblAge = new Label(compositeAge, SWT.NONE);
+		lblAge.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
+		lblAge.setText("Alter");
 
 		Combo comboAgeFrom = new Combo(compositeAge, SWT.NONE);
 

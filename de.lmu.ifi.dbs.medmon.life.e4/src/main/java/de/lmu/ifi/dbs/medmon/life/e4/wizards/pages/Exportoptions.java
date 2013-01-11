@@ -3,6 +3,7 @@ package de.lmu.ifi.dbs.medmon.life.e4.wizards.pages;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.di.annotations.Creatable;
+import org.eclipse.e4.ui.services.IStylingEngine;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -15,6 +16,8 @@ import org.eclipse.swt.layout.GridData;
 @Creatable
 public class Exportoptions extends WizardPage {
 	private Text textComment;
+	
+	@Inject IStylingEngine styleEngine;
 
 	/**
 	 * Create the wizard.
@@ -30,6 +33,8 @@ public class Exportoptions extends WizardPage {
 	 * @param parent
 	 */
 	public void createControl(Composite parent) {
+		styleEngine.setId(parent, "WizardStyle");
+		parent.setBackgroundMode(SWT.INHERIT_DEFAULT);
 		Composite containerExportoptions = new Composite(parent, SWT.NULL);
 
 		setControl(containerExportoptions);
@@ -65,7 +70,10 @@ public class Exportoptions extends WizardPage {
 		btnSdr.setText("sdr");
 		
 		Composite compositeComment = new Composite(containerExportoptions, SWT.NONE);
-		compositeComment.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+		GridData gd_compositeComment = new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1);
+		gd_compositeComment.heightHint = 100;
+		gd_compositeComment.widthHint = 400;
+		compositeComment.setLayoutData(gd_compositeComment);
 		compositeComment.setLayout(new GridLayout(1, false));
 		
 		Label lblComment = new Label(compositeComment, SWT.NONE);

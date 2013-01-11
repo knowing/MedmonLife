@@ -1,0 +1,20 @@
+#WizardStyle {
+	background-color: lightgreen white #DEEEDE white 30% 65% 100%;
+} 
+
+.logo {
+	background-color: white;
+	margin-right:0px;
+	margin-top:0px;
+}
+
+.startPageText {
+	color: grey;
+}
+
+Shell {
+	background-color: white;
+	color: black;
+	font: Verdana 8px;
+}
+

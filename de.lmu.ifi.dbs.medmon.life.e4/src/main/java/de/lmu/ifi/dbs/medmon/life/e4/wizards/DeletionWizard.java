@@ -1,9 +1,15 @@
 package de.lmu.ifi.dbs.medmon.life.e4.wizards;
 
+import java.net.URL;
+
 import javax.inject.Inject;
 
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.e4.core.di.annotations.Creatable;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.wizard.Wizard;
+import org.osgi.framework.FrameworkUtil;
 
 import de.lmu.ifi.dbs.medmon.life.e4.wizards.pages.DeletionFinished;
 import de.lmu.ifi.dbs.medmon.life.e4.wizards.pages.Filteroptions;
@@ -28,6 +34,8 @@ public class DeletionWizard extends Wizard {
 	@Inject
 	public DeletionWizard() {
 		setWindowTitle("Daten/Patienten l\u00F6schen");
+		URL url = FileLocator.find(FrameworkUtil.getBundle(this.getClass()), new Path("src/main/resources/icons/life_icon_64.png"), null);
+		setDefaultPageImageDescriptor(ImageDescriptor.createFromURL(url));
 	}
 
 	@Override

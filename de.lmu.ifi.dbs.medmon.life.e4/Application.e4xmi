@@ -8,16 +8,7 @@
         </children>
       </children>
     </children>
-    <mainMenu xmi:id="_--KG6CnBEeKnxrPfxV09mg" elementId="menu:org.eclipse.ui.main.menu">
-      <children xsi:type="menu:Menu" xmi:id="_--KG6SnBEeKnxrPfxV09mg" label="File">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_--KG6inBEeKnxrPfxV09mg" label="Open" iconURI="platform:/plugin/de.lmu.ifi.dbs.medmon.life.e4/icons/sample.gif" command="_--KG3inBEeKnxrPfxV09mg"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_--KG6ynBEeKnxrPfxV09mg" label="Save" iconURI="platform:/plugin/de.lmu.ifi.dbs.medmon.life.e4/icons/save_edit.gif" command="_--KG4SnBEeKnxrPfxV09mg"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_--KG7CnBEeKnxrPfxV09mg" label="Quit" command="_--KG2inBEeKnxrPfxV09mg"/>
-      </children>
-      <children xsi:type="menu:Menu" xmi:id="_--KG7SnBEeKnxrPfxV09mg" label="Help">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_--KG7inBEeKnxrPfxV09mg" label="About" command="_--KG5CnBEeKnxrPfxV09mg"/>
-      </children>
-    </mainMenu>
+    <mainMenu xmi:id="_5WU2IFwKEeKTGrAcJOPqHw" elementId="de.lmu.ifi.dbs.medmon.life.e4.menu.0"/>
     <trimBars xmi:id="_--KG8ynBEeKnxrPfxV09mg">
       <children xsi:type="menu:ToolBar" xmi:id="_--KG9CnBEeKnxrPfxV09mg" elementId="toolbar:org.eclipse.ui.main.toolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_--KG9SnBEeKnxrPfxV09mg" iconURI="platform:/plugin/de.lmu.ifi.dbs.medmon.life.e4/icons/sample.gif" command="_--KG3inBEeKnxrPfxV09mg"/>
