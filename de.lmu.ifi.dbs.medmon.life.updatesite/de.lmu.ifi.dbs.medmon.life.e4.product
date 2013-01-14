@@ -127,7 +127,7 @@
       <feature id="org.eclipse.gemini.jpa.feature" version="1.1.0.RELEASE"/>
       <feature id="org.eclipse.gemini.dbaccess.feature" version="1.1.0.201209190714"/>
       <feature id="org.eclipse.persistence.jpa" version="2.4.0.v20120608-r11652"/>
-      <feature id="org.eclipse.gemini.ext.di.feature" version="1.0.0.qualifier"/>
+      <feature id="org.eclipse.gemini.ext.di.feature" version="1.0.0.201207101027"/>
       <feature id="ch.qos.logback.feature" version="1.0.7"/>
       <feature id="org.joda.convert.feature" version="1.2.0"/>
       <feature id="org.joda.time.feature" version="2.1.0"/>
