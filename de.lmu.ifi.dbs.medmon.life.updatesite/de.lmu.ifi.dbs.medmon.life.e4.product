@@ -132,9 +132,9 @@
       <feature id="org.joda.convert.feature" version="1.2.0"/>
       <feature id="org.joda.time.feature" version="2.1.0"/>
       <feature id="org.slf4j.feature" version="1.6.6"/>
-      <feature id="de.lmu.ifi.dbs.medmon.medic.core.feature" version="1.0.0.201212032154"/>
-      <feature id="de.lmu.ifi.dbs.medmon.sensor.feature" version="1.0.0.201212032154"/>
-      <feature id="de.sendsor.accelerationSensor.feature" version="1.0.0.201212032154"/>
+      <feature id="de.lmu.ifi.dbs.medmon.medic.core.feature" version="1.0.0.201301281116"/>
+      <feature id="de.lmu.ifi.dbs.medmon.sensor.feature" version="1.0.0.201301281116"/>
+      <feature id="de.sendsor.accelerationSensor.feature" version="1.0.0.201301281116"/>
    </features>
 
    <configurations>
