@@ -8,6 +8,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.e4.core.di.annotations.Creatable;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.osgi.framework.FrameworkUtil;
 
@@ -46,6 +47,26 @@ public class ImportWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 		return true;
+	}
+	
+	@Override
+	public IWizardPage getNextPage(IWizardPage page) {
+	    if (page == patientSelection ) {
+	    	if (patientSelection.newPatient) {
+	    		return newPatient;
+	    	} else {
+	    		return limitTimeperiod;
+	    	}
+	    }
+	    return super.getNextPage(page);
+	}
+
+	@Override
+	public IWizardPage getPreviousPage(IWizardPage page) {
+	    if (page == limitTimeperiod) {
+	        return patientSelection;
+	    }
+	    return super.getPreviousPage(page);
 	}
 
 }

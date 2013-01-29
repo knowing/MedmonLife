@@ -8,6 +8,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.e4.core.di.annotations.Creatable;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.osgi.framework.FrameworkUtil;
 
@@ -49,7 +50,30 @@ public class DeletionWizard extends Wizard {
 
 	@Override
 	public boolean performFinish() {
-		return false;
+		return true;
+	}
+	
+	@Override
+	public IWizardPage getNextPage(IWizardPage page) {
+	    if (page == selectDeletion ) {
+	    	if (selectDeletion.patientDeletion) {
+	    		return patientSelection;
+	    	} else {
+	    		return filteroptions;
+	    	}
+	    }
+	    if (page == patientSelection){
+	    	return deletionFinished;
+	    }
+	    return super.getNextPage(page);
+	}
+
+	@Override
+	public IWizardPage getPreviousPage(IWizardPage page) {
+	    if (page == filteroptions) {
+	        return selectDeletion;
+	    }
+	    return super.getPreviousPage(page);
 	}
 
 }

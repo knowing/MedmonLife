@@ -9,10 +9,14 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Link;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 
 @Creatable
 public class SelectDeletion extends WizardPage {
 
+	public boolean patientDeletion = true;
+	
 	@Inject IStylingEngine styleEngine;
 	
 	/**
@@ -32,15 +36,30 @@ public class SelectDeletion extends WizardPage {
 		styleEngine.setId(parent, "WizardStyle");
 		parent.setBackgroundMode(SWT.INHERIT_DEFAULT);
 		Composite compositeSelectDeletion = new Composite(parent, SWT.NULL);
+		setPageComplete(false);
 
 		setControl(compositeSelectDeletion);
 		compositeSelectDeletion.setLayout(new GridLayout(1, false));
 		
 		Link linkPatient = new Link(compositeSelectDeletion, SWT.NONE);
+		linkPatient.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				patientDeletion = true;
+				getContainer().showPage(getNextPage());
+			}
+		});
 		linkPatient.setText("<a>Patient l\u00F6schen</a>");
 		
 		Link linkData = new Link(compositeSelectDeletion, SWT.NONE);
-		linkData.setText("<a>Patient l\u00F6schen</a>");
+		linkData.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				patientDeletion = false;
+				getContainer().showPage(getNextPage());
+			}
+		});
+		linkData.setText("<a>Daten l\u00F6schen</a>");
 	}
 
 }
