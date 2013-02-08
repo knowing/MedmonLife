@@ -111,9 +111,9 @@ public class PatientSelection extends WizardPage {
 		
 		patientTable.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
-				IStructuredSelection selection = (IStructuredSelection) patientTable.getSelection();
+				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 				selectedPatient = (Patient) selection.getFirstElement();
-				System.out.println("Selected : "+ selectedPatient.getFirstname() + " " + selectedPatient.getLastname());
+				log.debug("Selected : "+ selectedPatient.getFirstname() + " " + selectedPatient.getLastname());
 				newPatient = false;
 				flipToNextPage = true;
 				getWizard().getContainer().updateButtons();
