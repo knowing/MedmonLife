@@ -19,6 +19,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 import org.slf4j.Logger;
@@ -29,7 +30,7 @@ import de.lmu.ifi.dbs.medmon.life.e4.provider.PatientContentProvider;
 import de.lmu.ifi.dbs.medmon.life.e4.provider.PatientLabelProvider;
 
 @Creatable
-public class PatientSelection extends WizardPage {
+public class DeletePatient extends WizardPage {
 
 	private static final Logger log = LoggerFactory.getLogger(PatientSelection.class);
 
@@ -38,8 +39,6 @@ public class PatientSelection extends WizardPage {
 	private Composite compositePatientSelection;
 	private Patient selectedPatient;
 	private boolean flipToNextPage = false;
-
-	public boolean newPatient = false;
 
 	@Inject
 	IStylingEngine styleEngine;
@@ -59,9 +58,9 @@ public class PatientSelection extends WizardPage {
 	 * Create the wizard.
 	 */
 	@Inject
-	public PatientSelection() {
+	public DeletePatient() {
 		super("wizardPage");
-		setTitle("Patientenauswahl");
+		setTitle("Patient l\u00F6schen");
 	}
 
 	/**
@@ -107,23 +106,29 @@ public class PatientSelection extends WizardPage {
 				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 				selectedPatient = (Patient) selection.getFirstElement();
 				log.debug("Selected : " + selectedPatient.getFirstname() + " " + selectedPatient.getLastname());
-				newPatient = false;
-				flipToNextPage = true;
-				getWizard().getContainer().updateButtons();
 			}
 		});
 
-		Button btnAddPatient = new Button(compositePatientSelection, SWT.NONE);
-		btnAddPatient.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		btnAddPatient.addSelectionListener(new SelectionAdapter() {
+		Button btnDeletePatient = new Button(compositePatientSelection, SWT.NONE);
+		btnDeletePatient.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				newPatient = true;
-				setPageComplete(true);
-				getContainer().showPage(getNextPage());
+				MessageBox messageDialog = new MessageBox(getShell(), SWT.ICON_QUESTION | SWT.OK | SWT.CANCEL);
+				messageDialog.setText("Patienten l�schen");
+				messageDialog.setMessage("Patient " + selectedPatient.getFirstname() + " " + selectedPatient.getLastname() + " l\u00F6schen?");
+				int returnCode = messageDialog.open();
+				if (returnCode == SWT.OK) {
+					deletePatient(selectedPatient);
+					patientTable.refresh();
+					flipToNextPage = true;
+					setPageComplete(true);
+					getWizard().getContainer().updateButtons();
+				}
 			}
 		});
-		btnAddPatient.setText("neuen Patient hinzuf\u00FCgen");
+		btnDeletePatient.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
+		btnDeletePatient.setText("Patient l\u00F6schen");
+		new Label(compositePatientSelection, SWT.NONE);
 
 	}
 
@@ -135,6 +140,12 @@ public class PatientSelection extends WizardPage {
 		return result;
 	}*/
 
+	private void deletePatient(Patient patient) {
+		em.getTransaction().begin();
+		Patient mPatient = em.find(Patient.class, patient.getId());
+		em.remove(mPatient);
+		em.getTransaction().commit();
+	}
 
 	@Override
 	public boolean canFlipToNextPage() {

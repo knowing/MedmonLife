@@ -46,6 +46,7 @@ public class NewPatient extends WizardPage {
 	public NewPatient() {
 		super("wizardPage");
 		setTitle("Neuen Patient anlegen");
+		setPageComplete(false);
 	}
 
 	/**
@@ -122,6 +123,7 @@ public class NewPatient extends WizardPage {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				addPatient();
+				setPageComplete(true);
 				getContainer().showPage(getNextPage());
 			}
 		});

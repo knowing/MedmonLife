@@ -11,6 +11,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.layout.GridData;
 
 @Creatable
 public class SelectDeletion extends WizardPage {
@@ -36,10 +39,16 @@ public class SelectDeletion extends WizardPage {
 		styleEngine.setId(parent, "WizardStyle");
 		parent.setBackgroundMode(SWT.INHERIT_DEFAULT);
 		Composite compositeSelectDeletion = new Composite(parent, SWT.NULL);
-		setPageComplete(false);
 
 		setControl(compositeSelectDeletion);
-		compositeSelectDeletion.setLayout(new GridLayout(1, false));
+		compositeSelectDeletion.setLayout(new GridLayout(2, false));
+		
+		Label lblFiller1 = new Label(compositeSelectDeletion, SWT.NONE);
+		lblFiller1.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, true, 1, 1));
+		new Label(compositeSelectDeletion, SWT.NONE);
+		
+		Label lblDeletePatient = new Label(compositeSelectDeletion, SWT.NONE);
+		lblDeletePatient.setImage(SWTResourceManager.getImage(SelectDeletion.class, "/icons/deletePatient.png"));
 		
 		Link linkPatient = new Link(compositeSelectDeletion, SWT.NONE);
 		linkPatient.addSelectionListener(new SelectionAdapter() {
@@ -51,6 +60,9 @@ public class SelectDeletion extends WizardPage {
 		});
 		linkPatient.setText("<a>Patient l\u00F6schen</a>");
 		
+		Label lblDeleteData = new Label(compositeSelectDeletion, SWT.NONE);
+		lblDeleteData.setImage(SWTResourceManager.getImage(SelectDeletion.class, "/icons/deleteData.png"));
+		
 		Link linkData = new Link(compositeSelectDeletion, SWT.NONE);
 		linkData.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -60,6 +72,10 @@ public class SelectDeletion extends WizardPage {
 			}
 		});
 		linkData.setText("<a>Daten l\u00F6schen</a>");
+		
+		Label lblFiller2 = new Label(compositeSelectDeletion, SWT.NONE);
+		lblFiller2.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, true, 1, 1));
+		new Label(compositeSelectDeletion, SWT.NONE);
 	}
 
 }

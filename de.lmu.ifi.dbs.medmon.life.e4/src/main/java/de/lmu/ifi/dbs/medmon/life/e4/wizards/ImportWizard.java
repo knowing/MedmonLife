@@ -19,6 +19,8 @@ import de.lmu.ifi.dbs.medmon.life.e4.wizards.pages.PatientSelection;
 
 @Creatable
 public class ImportWizard extends Wizard {
+	
+	public int i = 1;
 
 	@Inject
 	PatientSelection patientSelection;

@@ -12,6 +12,7 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.osgi.framework.FrameworkUtil;
 
+import de.lmu.ifi.dbs.medmon.life.e4.wizards.pages.DeletePatient;
 import de.lmu.ifi.dbs.medmon.life.e4.wizards.pages.DeletionFinished;
 import de.lmu.ifi.dbs.medmon.life.e4.wizards.pages.Filteroptions;
 import de.lmu.ifi.dbs.medmon.life.e4.wizards.pages.FoundIDs;
@@ -25,6 +26,8 @@ public class DeletionWizard extends Wizard {
 	SelectDeletion selectDeletion;
 	@Inject
 	PatientSelection patientSelection;
+	@Inject
+	DeletePatient deletePatient;
 	@Inject
 	Filteroptions filteroptions;
 	@Inject
@@ -42,7 +45,7 @@ public class DeletionWizard extends Wizard {
 	@Override
 	public void addPages() {
 		addPage(selectDeletion);
-		addPage(patientSelection);
+		addPage(deletePatient);
 		addPage(filteroptions);
 		addPage(foundIDs);
 		addPage(deletionFinished);
@@ -57,12 +60,12 @@ public class DeletionWizard extends Wizard {
 	public IWizardPage getNextPage(IWizardPage page) {
 	    if (page == selectDeletion ) {
 	    	if (selectDeletion.patientDeletion) {
-	    		return patientSelection;
+	    		return deletePatient;
 	    	} else {
 	    		return filteroptions;
 	    	}
 	    }
-	    if (page == patientSelection){
+	    if (page == deletePatient){
 	    	return deletionFinished;
 	    }
 	    return super.getNextPage(page);
