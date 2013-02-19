@@ -139,6 +139,8 @@
 
    <configurations>
       <plugin id="de.lmu.ifi.dbs.medmon.derby" autoStart="true" startLevel="0" />
+      <plugin id="de.sendsor.accelerationSensor" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.device" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.gemini.dbaccess.derby" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="3" />
    </configurations>
