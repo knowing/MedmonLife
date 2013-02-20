@@ -39,6 +39,7 @@ public class DeletePatient extends WizardPage {
 	private Composite compositePatientSelection;
 	private Patient selectedPatient;
 	private boolean flipToNextPage = false;
+	private Button btnDeletePatient;
 
 	@Inject
 	IStylingEngine styleEngine;
@@ -104,12 +105,15 @@ public class DeletePatient extends WizardPage {
 		patientTable.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-				selectedPatient = (Patient) selection.getFirstElement();
-				log.debug("Selected : " + selectedPatient.getFirstname() + " " + selectedPatient.getLastname());
+				if(!selection.isEmpty()){
+					selectedPatient = (Patient) selection.getFirstElement();
+					log.debug("Selected : " + selectedPatient.getFirstname() + " " + selectedPatient.getLastname());
+					btnDeletePatient.setEnabled(true);
+				}
 			}
 		});
 
-		Button btnDeletePatient = new Button(compositePatientSelection, SWT.NONE);
+		btnDeletePatient = new Button(compositePatientSelection, SWT.NONE);
 		btnDeletePatient.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -123,11 +127,13 @@ public class DeletePatient extends WizardPage {
 					flipToNextPage = true;
 					setPageComplete(true);
 					getWizard().getContainer().updateButtons();
+					btnDeletePatient.setEnabled(false);
 				}
 			}
 		});
 		btnDeletePatient.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
 		btnDeletePatient.setText("Patient l\u00F6schen");
+		btnDeletePatient.setEnabled(false);
 		new Label(compositePatientSelection, SWT.NONE);
 
 	}
