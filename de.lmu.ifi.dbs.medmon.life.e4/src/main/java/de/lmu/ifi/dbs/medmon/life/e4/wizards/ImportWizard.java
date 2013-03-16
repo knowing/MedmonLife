@@ -57,8 +57,12 @@ public class ImportWizard extends Wizard {
 	    	if (patientSelection.newPatient) {
 	    		return newPatient;
 	    	} else {
+	    		limitTimeperiod.updateWidget(patientSelection.getSelection());
 	    		return limitTimeperiod;
 	    	}
+	    }
+	    if (page == newPatient){
+	    	limitTimeperiod.updateWidget(newPatient.getSelection());
 	    }
 	    return super.getNextPage(page);
 	}

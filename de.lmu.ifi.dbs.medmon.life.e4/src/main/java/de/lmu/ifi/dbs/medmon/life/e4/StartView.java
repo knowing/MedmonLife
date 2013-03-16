@@ -8,9 +8,12 @@ import static de.lmu.ifi.dbs.medmon.medic.core.preferences.IMedicPreferences.MED
 import static de.lmu.ifi.dbs.medmon.medic.core.preferences.IMedicPreferences.MEDMON_PATIENT;
 import static de.lmu.ifi.dbs.medmon.medic.core.preferences.IMedicPreferences.MEDMON_TMP;
 
+import java.io.IOException;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
@@ -18,6 +21,7 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.services.IStylingEngine;
+import org.eclipse.gemini.ext.di.GeminiPersistenceContext;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
@@ -29,8 +33,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.wb.swt.SWTResourceManager;
-import org.joda.time.Interval;
 import org.osgi.service.prefs.BackingStoreException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,28 +43,37 @@ import weka.core.Instances;
 import de.lmu.ifi.dbs.medmon.life.e4.wizards.DeletionWizard;
 import de.lmu.ifi.dbs.medmon.life.e4.wizards.ExportWizard;
 import de.lmu.ifi.dbs.medmon.life.e4.wizards.ImportWizard;
+import de.lmu.ifi.dbs.medmon.life.e4.wizards.ImportWizardOptions;
 import de.lmu.ifi.dbs.medmon.sensor.core.ISensor;
 import de.lmu.ifi.dbs.medmon.sensor.core.ISensorListener;
 import de.lmu.ifi.dbs.medmon.sensor.core.ISensorManager;
 import de.lmu.ifi.dbs.medmon.sensor.core.SensorEvent;
+import org.eclipse.swt.widgets.Button;
 
 public class StartView implements ISensorListener {
 
 	private static final Logger log = LoggerFactory.getLogger(StartView.class);
 	private ISensorManager sensorManager;
-
+	ISensor sensor;
+	
+	Shell shell;
+	
 	@Inject
 	IEclipseContext context;
 
 	@Inject
 	IStylingEngine styleEngine;
+	
+	@Inject
+	@GeminiPersistenceContext(unitName = "medmon")
+	EntityManager em;
 
 	/**
 	 * Create contents of the view part.
 	 */
 	@PostConstruct
 	public void createControls(final Composite parent) {
-
+		shell = parent.getShell();
 		styleEngine.setId(parent, "WizardStyle");
 		parent.setBackgroundMode(SWT.INHERIT_DEFAULT);
 
@@ -102,7 +115,6 @@ public class StartView implements ISensorListener {
 		linkImport.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
 				WizardDialog dialog = new WizardDialog(parent.getShell(), newImportWizard());
 				dialog.open();
 			}
@@ -183,6 +195,19 @@ public class StartView implements ISensorListener {
 		lblFiller2.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, true, 1, 1));
 		new Label(parent, SWT.NONE);
 		new Label(parent, SWT.NONE);
+		new Label(parent, SWT.NONE);
+		
+		Button btnNewButton = new Button(parent, SWT.NONE);
+		btnNewButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				test();
+			}
+		});
+		btnNewButton.setText("Test-Button");
+		new Label(parent, SWT.NONE);
+		new Label(parent, SWT.NONE);
+		new Label(parent, SWT.NONE);
 
 	}
 
@@ -213,10 +238,23 @@ public class StartView implements ISensorListener {
 	
 	@Override
 	public void sensorChanged(SensorEvent e) {
-		ISensor sensor = e.sensor;
-		// Do some stuff
-		sensor.isInstance(); // checks if sensor is a concrete instance
-	  }
+		this.sensor = e.sensor;
+		System.out.println(sensor.isInstance()); // checks if sensor is a concrete instance
+		/*try {
+			Instances instances = sensor.getData();
+		} catch (IOException e1) {
+			log.debug("getData() failed");
+		}*/
+	}
+	
+	public void test(){
+		System.out.println(sensor.isInstance());
+		try {
+			Instances instances = sensor.getData();
+		} catch (IOException e) {
+			
+		}
+	}
 
 	@Inject
 	protected void initSensorManager(ISensorManager sensorManager) {

@@ -17,6 +17,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.DateTime;
 
 import de.lmu.ifi.dbs.medmon.database.entity.Patient;
+import de.lmu.ifi.dbs.medmon.life.e4.wizards.ImportWizardOptions;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -32,6 +34,8 @@ public class NewPatient extends WizardPage {
 	
 	private boolean flipToNextPage = false;
 	private boolean add = true;
+	private boolean selected = false;
+	private Patient selectedPatient;
 
 	@Inject IStylingEngine styleEngine;
 	
@@ -146,11 +150,21 @@ public class NewPatient extends WizardPage {
 		
 		em.persist(patient);
 		em.getTransaction().commit();
+		selectedPatient = patient;
+		selected = true;
 		
 	}
 	
 	@Override
 	public boolean canFlipToNextPage() {
 		return flipToNextPage;
+	}
+	
+	public boolean isSelected(){
+		return selected;
+	}
+	
+	public Patient getSelection(){
+		return selectedPatient;
 	}
 }

@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
 import de.lmu.ifi.dbs.medmon.database.entity.Patient;
 import de.lmu.ifi.dbs.medmon.life.e4.provider.PatientContentProvider;
 import de.lmu.ifi.dbs.medmon.life.e4.provider.PatientLabelProvider;
+import de.lmu.ifi.dbs.medmon.life.e4.wizards.ImportWizardOptions;
 
 @Creatable
 public class PatientSelection extends WizardPage {
@@ -36,8 +37,9 @@ public class PatientSelection extends WizardPage {
 	private Text txtPatientInput;
 	private TableViewer patientTable;
 	private Composite compositePatientSelection;
-	private Patient selectedPatient;
+	public Patient selectedPatient;
 	private boolean flipToNextPage = false;
+	public boolean selected = false;
 
 	public boolean newPatient = false;
 
@@ -106,6 +108,7 @@ public class PatientSelection extends WizardPage {
 			public void selectionChanged(SelectionChangedEvent event) {
 				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 				selectedPatient = (Patient) selection.getFirstElement();
+				selected = true;
 				log.debug("Selected : " + selectedPatient.getFirstname() + " " + selectedPatient.getLastname());
 				newPatient = false;
 				flipToNextPage = true;
@@ -140,5 +143,12 @@ public class PatientSelection extends WizardPage {
 	public boolean canFlipToNextPage() {
 		return flipToNextPage;
 	}
-
+	
+	public boolean isSelected(){
+		return true;
+	}
+	
+	public Patient getSelection(){
+		return selectedPatient;
+	}
 }
